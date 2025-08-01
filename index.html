@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Event Showcase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Event Showcase</h1>
+    <div class="filter-btns">
+      <button class="filter-btn active" data-tier="all">All</button>
+      <button class="filter-btn" data-tier="free">Free</button>
+      <button class="filter-btn" data-tier="silver">Silver</button>
+      <button class="filter-btn" data-tier="gold">Gold</button>
+      <button class="filter-btn" data-tier="platinum">Platinum</button>
+    </div>
+  </header>
+
+  <section class="cards">
+    <div class="card" data-tier="free">
+      <div class="card-content">
+        <h2>Free Event</h2>
+        <p>Accessible to all users.</p>
+        <span class="badge free">FREE</span>
+      </div>
+    </div>
+    <div class="card" data-tier="silver">
+      <div class="card-content">
+        <h2>Silver Event</h2>
+        <p>Silver tier and above.</p>
+        <span class="badge silver">SILVER</span>
+      </div>
+    </div>
+    <div class="card" data-tier="gold">
+      <div class="card-content">
+        <h2>Gold Event</h2>
+        <p>Gold tier and above.</p>
+        <span class="badge gold">GOLD</span>
+      </div>
+    </div>
+    <div class="card" data-tier="platinum">
+      <div class="card-content">
+        <h2>Platinum Event</h2>
+        <p>Exclusive to platinum tier.</p>
+        <span class="badge platinum">PLATINUM</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const order = { free:1, silver:2, gold:3, platinum:4 };
+    document.querySelectorAll('.filter-btn').forEach(btn =>
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const tier = btn.dataset.tier;
+        document.querySelectorAll('.card').forEach(card => {
+          const ct = card.dataset.tier;
+          card.style.display = tier === 'all' || order[ct] >= order[tier] ? '' : 'none';
+        });
+      })
+    );
+  </script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</body>
+</html>
+

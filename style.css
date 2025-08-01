@@ -1,0 +1,53 @@
+/* Base and layout */
+* { margin:0; padding:0; box-sizing:border-box; font-family:sans-serif; }
+body { background:#f0f4f8; padding:20px; }
+header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:20px; }
+header h1 { font-size:2.5rem; color:#333; }
+
+/* Buttons */
+.filter-btns { display:flex; gap:12px; flex-wrap:wrap; }
+.filter-btn {
+  padding:10px 20px; border:none; border-radius:30px;
+  background:#e0e7ff; color:#1e3a8a;
+  cursor:pointer; font-weight:600; transition:background 0.3s, color 0.3s;
+}
+.filter-btn.active,
+.filter-btn:hover { background:#c7d2fe; color:#1e40af; }
+
+/* Grid layout */
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+/* Card visuals */
+.card {
+  background:#fff; border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  overflow:hidden; transition:transform 0.3s, box-shadow 0.3s;
+}
+.card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
+
+.card-content {
+  padding:24px;
+}
+.card-content h2 { font-size:1.5rem; margin-bottom:8px; color:#111; }
+.card-content p { font-size:1rem; margin-bottom:12px; color:#555; }
+
+/* Badge styling */
+.badge {
+  display:inline-block; padding:4px 10px;
+  font-size:0.75rem; font-weight:600; border-radius:4px;
+}
+
+/* Tier-based colors */
+[data-tier="free"]       { background:#ffffff; }
+[data-tier="silver"]     { background:#f9fafb; }
+[data-tier="gold"]       { background:#fff7ed; }
+[data-tier="platinum"]   { background:#f5f3ff; }
+
+.badge.free { background:#d1d5db; color:#374151; }
+.badge.silver { background:#9ca3af; color:#1f2937; }
+.badge.gold { background:#fde68a; color:#92400e; }
+.badge.platinum { background:#ddd6fe; color:#4c1d95; }
